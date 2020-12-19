@@ -1,0 +1,22 @@
+public static String consumeInputStream(InputStream stream){
+    try {
+        BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+        String s ;
+        StringBuilder sb = new StringBuilder();
+        while((s=br.readLine())!=null){
+            System.out.println(s);
+            sb.append(s);
+        }
+        return sb.toString();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
+
+
+consumeInputStream(proc.getInputStream());
+consumeInputStream(proc.getErrorStream());
+
+
