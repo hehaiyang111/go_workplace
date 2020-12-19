@@ -20,23 +20,44 @@ import "fmt"
 	Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 
-func lengthOfLongestSubstring_(s string) int {
-	if len(s) == 0 {
+//func lengthOfLongestSubstring_(s string) int {
+//	if len(s) == 0 {
+//		return 0
+//	}
+//	var freq [256]int
+//	result, left, right := 0, 0, 0
+//
+//	for left < len(s) {
+//		// s[right]-'a' 相对位置：对于字符串a是第一个
+//		if right < len(s) && freq[s[right]-'a'] == 0 {
+//			freq[s[right]-'a']++
+//			right++
+//		} else {
+//			freq[s[left]-'a']--
+//			left++
+//		}
+//		result = max(result, right-left)
+//	}
+//	return result
+//}
+
+func lengthOfLongestSubstring_(a string) int  {
+	if 0 == len(a){
 		return 0
 	}
 	var freq [256]int
-	result, left, right := 0, 0, 0
-
-	for left < len(s) {
-		if right+1 < len(s) && freq[s[right]-'a'] == 0 {
-			freq[s[right]-'a']++
-			right++
-		} else {
-			freq[s[left]-'a']--
-			left++
+	result, left , right := 0, 0 ,0
+	for left < len(a) {
+		if right < len(a) && freq[a[right] - 'a'] == 0{
+			freq[a[right] - 'a'] ++
+			right ++
+		}else {
+			freq[a[left] - 'a'] --
+			left ++
 		}
-		result = max(result, right-left)
+		result = max(result,right-left)
 	}
+
 	return result
 }
 
@@ -48,6 +69,6 @@ func max(a int, b int) int {
 }
 
 func main()  {
-	a := "bbbbb"
+	a := "bbbbbfdasf"
 	fmt.Print(lengthOfLongestSubstring_(a))
 }
