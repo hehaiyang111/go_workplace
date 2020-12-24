@@ -9,8 +9,8 @@ import "fmt"
 
 /**
 1. 计算平方和的协程
-params: int
-		chan int
+	params: int
+			chan int
 */
 func calculateSquares(a int, b chan int) {
 	sum := 0

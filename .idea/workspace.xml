@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="deadlock problem">
-      <change afterPath="$PROJECT_DIR$/信道/test21.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/信道/test22.go" afterDir="false" />
+    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="Coroutine and channel">
+      <change afterPath="$PROJECT_DIR$/信道/test23.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/信道/test20.go" beforeDir="false" afterPath="$PROJECT_DIR$/信道/test20.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/信道/test19.go" beforeDir="false" afterPath="$PROJECT_DIR$/信道/test19.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +46,7 @@
       <recent name="D:\go_workplace\信道" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build test22.go">
-    <configuration name="go build test18.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go_workplace" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/信道/test18.go" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build test23.go">
     <configuration name="go build test19.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go_workplace" />
       <working_directory value="$PROJECT_DIR$" />
@@ -88,13 +79,21 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go build test23.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go_workplace" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/信道/test23.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build test23.go" />
         <item itemvalue="Go Build.go build test22.go" />
         <item itemvalue="Go Build.go build test21.go" />
         <item itemvalue="Go Build.go build test20.go" />
         <item itemvalue="Go Build.go build test19.go" />
-        <item itemvalue="Go Build.go build test18.go" />
       </list>
     </recent_temporary>
   </component>
@@ -118,6 +117,7 @@
     <MESSAGE value="interface" />
     <MESSAGE value="协程  and  信道" />
     <MESSAGE value="deadlock problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="deadlock problem" />
+    <MESSAGE value="Coroutine and channel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coroutine and channel" />
   </component>
 </project>
