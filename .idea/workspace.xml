@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="work buffer">
-      <change afterPath="$PROJECT_DIR$/select/test25.go" afterDir="false" />
+    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="select">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/select/test25.go" beforeDir="false" afterPath="$PROJECT_DIR$/select/test25.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +124,7 @@
     <MESSAGE value="Coroutine and channel" />
     <MESSAGE value="part content for buffer channel" />
     <MESSAGE value="work buffer" />
-    <option name="LAST_COMMIT_MESSAGE" value="work buffer" />
+    <MESSAGE value="select" />
+    <option name="LAST_COMMIT_MESSAGE" value="select" />
   </component>
 </project>
