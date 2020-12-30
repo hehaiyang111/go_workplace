@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="select">
-      <change afterPath="$PROJECT_DIR$/mutex/test26.go" afterDir="false" />
+    <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="mutex">
+      <change afterPath="$PROJECT_DIR$/src/oop/employee/employee.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/oop/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +24,11 @@
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
+    <option name="urls">
+      <list>
+        <option value="file://$PROJECT_DIR$" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1lrlKxF3K2WCkvIxK0oi9EdNCYr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -43,27 +49,31 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\go_workplace\src" />
+      <recent name="D:\go_workplace" />
       <recent name="D:\go_workplace\Gin" />
       <recent name="D:\go_workplace\信道" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build test26.go">
-    <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build main.go">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go_workplace" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/main.go" />
+      <filePath value="$PROJECT_DIR$/src/oop/main.go" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build main.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build oop" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go_workplace" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/web_gee/http-base/base1/main.go" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/src/oop/main.go" />
+      <package value="oop" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -93,11 +103,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Build.go build oop" />
         <item itemvalue="Go Build.go build test26.go" />
         <item itemvalue="Go Build.go build test25.go" />
         <item itemvalue="Go Build.go build test24.go" />
-        <item itemvalue="Go Build.go build main.go (2)" />
-        <item itemvalue="Go Build.go build main.go (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -125,6 +135,7 @@
     <MESSAGE value="part content for buffer channel" />
     <MESSAGE value="work buffer" />
     <MESSAGE value="select" />
-    <option name="LAST_COMMIT_MESSAGE" value="select" />
+    <MESSAGE value="mutex" />
+    <option name="LAST_COMMIT_MESSAGE" value="mutex" />
   </component>
 </project>
