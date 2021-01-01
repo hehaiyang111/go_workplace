@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0511616-b1c1-486d-9462-cce07dbd14a1" name="Default Changelist" comment="结构体取代类">
-      <change afterPath="$PROJECT_DIR$/组合替代继承/test27.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interface/test28.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +58,7 @@
       <recent name="D:\go_workplace\信道" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build test27.go">
+  <component name="RunManager" selected="Go Build.go build test28.go">
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go_workplace" />
       <working_directory value="$PROJECT_DIR$" />
@@ -73,14 +73,6 @@
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/src/oop/main.go" />
       <package value="oop" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build test25.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go_workplace" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/select/test25.go" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -100,13 +92,21 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go build test28.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go_workplace" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/interface/test28.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build test28.go" />
         <item itemvalue="Go Build.go build test27.go" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build oop" />
         <item itemvalue="Go Build.go build test26.go" />
-        <item itemvalue="Go Build.go build test25.go" />
       </list>
     </recent_temporary>
   </component>
