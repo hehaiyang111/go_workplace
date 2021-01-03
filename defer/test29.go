@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 /**
 defer：含有defer语句的函数，会在函数将要返回之前，调用另外一个函数。
@@ -67,10 +70,85 @@ defer：含有defer语句的函数，会在函数将要返回之前，调用另�
 /**
 defer栈，当一个函数内多次调用defer时，Go会把defer调用放入一个栈中	，随后按照后进先出的顺序执行。
 */
-func main() {
-	name := "hehaiyang"
-	fmt.Printf("Orignal String: %s\n", string(name))
-	for _, v := range []rune(name) {
-		defer fmt.Printf("%c", v)
+//func main() {
+//	name := "hehaiyang"
+//	fmt.Printf("Orignal String: %s\n", string(name))
+//	for _, v := range []rune(name) {
+//		defer fmt.Printf("%c", v)
+//	}
+//}
+
+/**
+defer用途
+通过未使用defer和使用defer的两段代码做对比。
+*/
+// 未使用
+//type rect struct {
+//	length int
+//	width  int
+//}
+//
+//func (r rect) area(wg *sync.WaitGroup) {
+//	if r.length < 0 {
+//		fmt.Printf("rect %v's length should be greater than zero\n", r)
+//		wg.Done()
+//		return
+//	}
+//	if r.width < 0 {
+//		fmt.Printf("rect %v's width should be greater than zero\n", r)
+//		wg.Done()
+//		return
+//	}
+//	area := r.length * r.width
+//	fmt.Printf("rect %v's area %d\n", r, area)
+//	wg.Done()
+//}
+//
+//func main() {
+//	var wg sync.WaitGroup
+//	r1 := rect{-67, 89}
+//	r2 := rect{5, -67}
+//	r3 := rect{8, 9}
+//	rects := []rect{r1, r2, r3}
+//	for _, v := range rects {
+//		wg.Add(1)
+//		go v.area(&wg)
+//	}
+//	wg.Wait()
+//	fmt.Println("All go routines finished executing")
+//}
+
+//使用defer
+type rect struct {
+	width  int
+	length int
+}
+
+func (r rect) area(wg *sync.WaitGroup) {
+	// 只有在area函数返回的时候才会调用
+	defer wg.Done()
+	if r.length < 0 {
+		fmt.Printf("rect %v's length should be greater than zero\n", r)
+		return
 	}
+	if r.width < 0 {
+		fmt.Printf("rect %v's width should be greater than zero\n", r)
+		return
+	}
+	area := r.length * r.width
+	fmt.Printf("rect %v's area %d\n", r, area)
+}
+
+func main() {
+	var wg sync.WaitGroup
+	r1 := rect{-67, 89}
+	r2 := rect{5, -67}
+	r3 := rect{8, 9}
+	rects := []rect{r1, r2, r3}
+	for _, v := range rects {
+		wg.Add(1)
+		go v.area(&wg)
+	}
+	wg.Wait()
+	fmt.Println("All go routines finished executing")
 }
