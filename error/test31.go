@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /**
 自定义Error
 */
@@ -70,5 +72,97 @@ func main() {
 
 /**
 Example3:使用结构体类型和字段提供错误的更多信息
-Explain：
+Explain：错误还可以用实现error的接口的结构体来表示.这种方式可以更加灵活的处理错误.在上面例子中,如果我们希望访问引发错误的半径，现在唯一的办法就是解析错误的描述信息Area calculation failed, radius -20.00 is less than zero。这样做不太好，因为一旦描述信息发生变化，程序就会出错。
+method:创建一个实现error接口的结构体类型，并使用它的字段来提供关于错误的更多信息。
 */
+/**
+method1: 创建一个表示错误的结构体类型
+*/
+/**
+type areaError struct {
+	err string
+	radius float64
+}
+
+func (e *areaError) Error() string {
+	return fmt.Sprintf("radius %0.2f: %s", e.radius, e.err)
+}
+
+func circleArea(radius float64) (float64, error) {
+	if radius < 0 {
+		return 0, &areaError{err: "radius is negative",radius: radius}
+	}
+	return math.Pi * radius * radius, nil
+}
+
+func main() {
+	radius := -20.0
+	area, err := circleArea(radius)
+	if err != nil {
+		if err, ok := err.(*areaError); ok {
+			// 如果是半径错误
+			fmt.Printf("Radius %0.2f is less than zero", err.radius)
+			return
+		}
+		//如果是别的错误
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("Area of rectangle1 %0.2f", area)
+}
+*/
+
+/*
+	method2
+*/
+type areaError struct {
+	err    string  //error description
+	length float64 //length which caused the error
+	width  float64 //width which caused the error
+}
+
+func (e *areaError) Error() string {
+	return e.err
+}
+
+func (e *areaError) lengthNegative() bool {
+	return e.length < 0
+}
+
+func (e *areaError) widthNegative() bool {
+	return e.width < 0
+}
+
+func rectArea(length, width float64) (float64, error) {
+	err := ""
+	if length < 0 {
+		err += "length is less than zero"
+	}
+	if width < 0 {
+		if err == "" {
+			err = "width is less than zero"
+		} else {
+			err += ", width is less than zero"
+		}
+	}
+	if err != "" {
+		return 0, &areaError{err, length, width}
+	}
+	return length * width, nil
+}
+func main() {
+	length, width := -5.0, -9.0
+	area, err := rectArea(length, width)
+	if err != nil {
+		if err, ok := err.(*areaError); ok {
+			if err.lengthNegative() {
+				fmt.Printf("error: length %0.2f is less than zero\n", err.length)
+			}
+			if err.widthNegative() {
+				fmt.Printf("error: width %0.2f is less than zero\n", err.width)
+			}
+			return
+		}
+	}
+	fmt.Println(area)
+}
