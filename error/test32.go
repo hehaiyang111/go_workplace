@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"runtime/debug"
 )
 
 /**
@@ -94,9 +94,12 @@ func main() {
 	fmt.Println("returned normally from main")
 }
 */
+
 /**
 只有在相同的Go协程中调用recover才管用。recover不能恢复一个不同协程的panic.我们来举例一下。
 */
+
+/*
 func recovery() {
 	if r := recover(); r != nil {
 		fmt.Println("recovered:", r)
@@ -111,6 +114,62 @@ func a() {
 func b() {
 	fmt.Println("Inside B")
 	panic("oh! B panicked")
+}
+func main() {
+	a()
+	fmt.Println("normally returned from main")
+}
+*/
+
+/*
+	运行时panic
+*/
+/*
+func a() {
+	n := []int{5, 7, 4}
+	fmt.Println(n[4])
+	fmt.Println("normally returned from a")
+}
+func main() {
+	a()
+	fmt.Println("normally returned from main")
+}
+*/
+
+/*
+	捕捉这个panic
+*/
+/*
+func r() {
+	if r := recover(); r != nil {
+		fmt.Println("Recovered", r)
+	}
+}
+func a() {
+	defer r()
+	n := []int{5, 7, 4}
+	fmt.Println(n[4])
+	fmt.Println("normally returned from a")
+}
+func main() {
+	a()
+	fmt.Println("normally returned from main")
+}
+*/
+/**
+捕捉并打印
+*/
+func r() {
+	if r := recover(); r != nil {
+		fmt.Println("Recovered", r)
+		debug.PrintStack()
+	}
+}
+func a() {
+	defer r()
+	n := []int{5, 7, 4}
+	fmt.Println(n[4])
+	fmt.Println("normally returned from a")
 }
 func main() {
 	a()
