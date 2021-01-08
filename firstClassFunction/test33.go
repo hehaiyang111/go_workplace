@@ -97,6 +97,8 @@ Hello Everyone
 Hello World Gopher
 Hello Everyone !
 */
+
+/*
 func appendStr() func(a string) string {
 	t := "Hello"
 	c := func(b string) string {
@@ -113,4 +115,50 @@ func main() {
 
 	fmt.Println(a("Gopher"))
 	fmt.Println(b("!"))
+}
+*/
+
+/*
+	应用：我们会创建一个程序，基于一些条件，来过滤一个students切片。现在我们来逐步实现。
+*/
+type student struct {
+	firstName string
+	lastName  string
+	grade     string
+	country   string
+}
+
+//filter函数:该函数接受一个students切片和一个函数作为参数，这个函数会计算一个学生是否满足筛选条件。
+//f这个函数接受每个学生作为参数，如果该函数返回true，就表示该学生通过了筛选条件，接着将该学生添加到了结果切片r中。
+func filter(s []student, f func(student2 student) bool) []student {
+	var r []student
+	for _, v := range s {
+		if f(v) == true {
+			r = append(r, v)
+		}
+	}
+	return r
+}
+
+func main() {
+	s1 := student{
+		firstName: "hhy",
+		lastName:  "zuishuai",
+		grade:     "99",
+		country:   "China",
+	}
+	s2 := student{
+		firstName: "lxy",
+		lastName:  "zuimei",
+		grade:     "100",
+		country:   "China",
+	}
+	s := []student{s1, s2}
+	f := filter(s, func(student2 student) bool {
+		if student2.grade == "100" {
+			return true
+		}
+		return false
+	})
+	fmt.Println(f)
 }
