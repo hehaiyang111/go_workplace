@@ -1,4 +1,1 @@
-123156dsadas
-d
-dsadsad
-asdasd4561
+hello i am firstly write something with go

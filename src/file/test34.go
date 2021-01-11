@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"os"
+)
+
 /*
 	将整个文件读取到内存
 	ioutil.ReadFile ＋　绝对路径
@@ -92,4 +97,112 @@ func main() {
 	os.O_RDWR readwrite
 	os.O_TRUNC 清空
 	os.O_APPEND 追加
+	perm:文件权限，一个八进制树，读 4 ， 写2 执行 1
 */
+/*
+	将字符串写入文件
+*/
+/*
+func main() {
+	// 如果txt空则写入，不空则覆盖
+	f, err := os.Create("D:\\go_workplace\\src\\file\\test.txt")
+	if err != nil {
+		fmt.Println("has some error")
+		return
+	}
+	f1, err := f.WriteString("hello i am firstly write something with go")
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+	fmt.Println(f1, "bytes written successfully")
+	err = f.Close()
+	if err != nil {
+		panic(err)
+		return
+	}
+}
+*/
+
+/*
+	将字节写入到文件，使用write的方法
+*/
+/*
+func main() {
+	file, err := os.Create("D:\\go_workplace\\src\\file\\test2.txt")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	d2 := []byte{104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100}
+	file1, err := file.Write(d2)
+	if err != nil {
+		fmt.Println(err)
+		file.Close()
+		return
+	}
+	fmt.Println(file1, "bytes written successfully")
+	err = file.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+*/
+
+/*
+	将字符串一行一行的写入文件
+*/
+/*
+func main() {
+	file, err := os.Create("D:\\go_workplace\\src\\file\\file1")
+	if err != nil {
+		fmt.Println(err)
+		file.Close()
+		return
+	}
+	b := []string{"welcome to China", "China is a good place that attracts you not to go home", "believe me"}
+
+	for _, v := range b {
+		fmt.Fprintln(file, v)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+
+	err = file.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println("file written successfully")
+}
+*/
+
+/*
+	追加到文件：我们将Hehaiyang追加到file1这个文件中
+	这个文件以追加和写的方式打开，这些标志将通过Open方法实现
+*/
+func main() {
+	file, err := os.OpenFile("D:\\go_workplace\\src\\file\\file1", os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	newLine := "hehaiyang"
+	_, err = fmt.Fprintln(file, newLine)
+	if err != nil {
+		fmt.Println(err)
+		file.Close()
+		return
+	}
+	err = file.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("file appended successfully")
+}
