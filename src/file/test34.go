@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
+	"sync"
 )
 
 /*
@@ -186,6 +188,7 @@ func main() {
 	追加到文件：我们将Hehaiyang追加到file1这个文件中
 	这个文件以追加和写的方式打开，这些标志将通过Open方法实现
 */
+/*
 func main() {
 	file, err := os.OpenFile("D:\\go_workplace\\src\\file\\file1", os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
@@ -205,4 +208,66 @@ func main() {
 		return
 	}
 	fmt.Println("file appended successfully")
+}
+*/
+
+/*
+	并发写入文件：多个goroutine同时写文件时，可能会遇到竞态条件。因此当发生同步写的时候需要一个channel作为一致写入的条件
+	应用：创建100个goroutine。每个goroutine将产生一个随机数，届时将有100个随机数产生，这些随机数将被写入到文件里面。
+	步骤：
+		1. 创建一个channel用来读和写这个随机数
+		2. 创建100个生产者goroutine。每个goroutine将产生随机数并将随机数写入到channel里
+		3. 创建一个消费者goroutine用来从channel读取随机数并将他写入文件。这样的话我们就只有一个goroutine向文件中写数据，从而避免竞态条件，
+		4. 一旦完成则关闭文件
+*/
+// create random number
+func produce(data chan int, wg *sync.WaitGroup) {
+	n := rand.Intn(999)
+	data <- n //写入
+	wg.Done() //调用方法表示完成
+}
+
+func consume(data chan int, done chan bool) {
+	file, err := os.Create("D:\\go_workplace\\src\\file\\concurrent")
+	if err != nil {
+		fmt.Println(err)
+		file.Close()
+		return
+	}
+	for d := range data {
+		_, err := fmt.Fprintln(file, d)
+		if err != nil {
+			fmt.Println(err)
+			file.Close()
+			done <- false
+			return
+		}
+	}
+	err = file.Close()
+	if err != nil {
+		fmt.Println(err)
+		done <- false
+		return
+	}
+	done <- true
+}
+func main() {
+	data := make(chan int)
+	done := make(chan bool)
+	wg := sync.WaitGroup{}
+	for i := 0; i < 100; i++ {
+		wg.Add(1)
+		go produce(data, &wg)
+	}
+	go consume(data, done)
+	go func() {
+		wg.Wait()
+		close(data)
+	}()
+	d := <-done
+	if d == true {
+		fmt.Println("File written successfully")
+	} else {
+		fmt.Println("File writing failed")
+	}
 }
